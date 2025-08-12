@@ -1,0 +1,113 @@
+{% extends 'layout.html' %} {% block body %}
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Harvestor - Fertilizer Suggestion</title>
+</head>
+<style>
+      input[type=submit] {
+          background-color: #06911d;
+         
+          border-style: outset;
+          color: white;
+          border: 1px solid 6837d;
+          border-radius: 10px;
+          padding: 12px 25px;
+          font: bold 20px arial, sans-serif;
+          margin: 10px 2px;
+          cursor: pointer;
+      }
+      input[type="number"] {
+          font-family:sans-serif;
+          height: 40px;
+          width: 300px;
+          border-radius: 5px;
+          border : 1px solid;
+          text-align: center;
+      }
+      input[type="number"]::placeholder {
+          font-weight: lighter;
+          text-align: center;
+      }
+      body {
+            background-image: url("../static/images/4.jpg");
+            background-repeat: no-repeat;
+            background-size:cover;
+            color:white;
+          }
+      h2 {
+          color: white;
+      }
+      select {
+           width: 300px;
+           text-align-last:center;
+           border-radius: 5px;
+           font-family:sans-serif;
+           font-size:15px;
+           font-weight: bold;
+           height: 40px;
+      }
+    </style>
+<body style="text-align:center;">
+<div class="banner">
+
+ <div>
+	<h2><b><br>Find out most suitable fertilizer for your crop</b></h2>
+    <br>
+     <h1>{{x}}</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form method="POST" action="{{ url_for('fert_recommend') }}">
+
+        <label for="temp" style="font-size:130%;"><b>Enter the Temperature Value:</b></label><br>
+        <input type="number" name="temp" placeholder="Range:25-40" min="25" max="40" required="required" /><br><br>
+
+        <label for="humid" style="font-size:130%;"><b>Enter the Humidity in %:</b></label><br>
+        <input type="number" name="humid" placeholder="Range:40-70" min="40" max="70" required="required" /><br><br>
+
+        <label for="mois" style="font-size:130%;"><b>Enter the Moisture Value:</b></label><br>
+        <input type="number" name="mois" placeholder="Range:30-60" min="30" max="60" required="required" /><br><br>
+
+        <label for="soil" style="font-size:130%;"><b>Select the Soil Type:</b></label><br>
+        <select name="soil" id="soil" >
+            <option value=0>Black soil</option>
+            <option value=1>Alluvial soil</option>
+            <option value=2>Laterite soil</option>
+            <option value=3>Red soil</option>
+            <option value=4>Clayey soil</option>
+        </select><br><br>
+
+        <label for="crop" style="font-size:130%;"><b>Select the Crop Type:</b></label><br>
+        <select name="crop" id="crop" >
+            <option value=0>Potato</option>
+            <option value=1>Cotton</option>
+            <option value=2>Ground Nuts</option>
+            <option value=3>Maize</option>
+            <option value=4>Tea</option>
+            <option value=5>Rice</option>
+            <option value=6>Cauliflower</option>
+            <option value=7>Coffee</option>
+            <option value=8>Sugarcane</option>
+            <option value=9>Tobacco</option>
+            <option value=10>Wheat</option>
+        </select><br><br>
+
+        <label for="nitro" style="font-size:130%;"><b>Enter the Nitrogen Value:</b></label><br>
+        <input type="number" name="nitro" placeholder="Range:0-140" min="0" max="140" required="required" /><br><br>
+
+        <label for="pota" style="font-size:130%;"><b>Enter the Pottasium Value:</b></label><br>
+        <input type="number" name="pota" placeholder="Range:0-200" min="0" max="200" required="required" /><br><br>
+
+        <label for="phos" style="font-size:130%;"><b>Enter the Phosphorous Value:</b></label><br>
+        <input type="number" name="phos" placeholder="Range:0-140" min="0" max="140" required="required" /><br><br>
+        <input type="submit" >
+
+        
+    </form>
+</div>
+ </div>
+
+</body>
+</html>
+{% endblock %}
